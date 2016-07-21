@@ -77,9 +77,7 @@ respond($result);
 
 function respond($result)
 {
-    echo "<pre>";
     echo json_encode($result, JSON_PRETTY_PRINT);
-    echo "</pre>";
 }
 
 function get($var)
