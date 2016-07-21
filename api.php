@@ -61,7 +61,7 @@ $result = [];
 switch ($action) {
     case "test":
         $result = [
-            "msg" => "Test",
+            "message" => "Test",
             "success" => true
         ];
         break;
@@ -70,6 +70,9 @@ switch ($action) {
         break;
     case "get_announcement":
         $result = get_announcement();
+        break;
+    case "get_last_announcements":
+        $result = get_last_announcements();
         break;
 }
 
@@ -110,12 +113,12 @@ function new_announcement()
         $result["success"] = $success;
 
         if ($success == false) {
-            $result["msg"] = mysqli_error($GLOBALS["mysqli_link"]);
+            $result["message"] = mysqli_error($GLOBALS["mysqli_link"]);
         }
     } else { //No Title
         $result = [
             "success" => false,
-            "msg" => "No title provided"
+            "message" => "No title provided"
         ];
     }
 
@@ -183,7 +186,29 @@ function get_announcement()
     if ($result["success"]) {
         $result["announcement"] = get_results($GLOBALS["prepared_statements"][$stmt]["stmt"]);
     } else { //Statement execution failed
-        $result["msg"] = mysqli_error($GLOBALS["mysqli_link"]);
+        $result["message"] = mysqli_error($GLOBALS["mysqli_link"]);
+    }
+
+    return $result;
+}
+
+function get_last_announcements()
+{
+    $result = [];
+    $num = get("num");
+    $num = ($num == null ? 10 : $num);
+    assign_args(
+        [
+            "num" => $num
+        ],
+        $GLOBALS["prepared_statements"]["last_announcements"]["args"]
+    );
+    $result["success"] = $GLOBALS["prepared_statements"]["last_announcements"]["stmt"]->execute();
+
+    if ($result["success"]) {
+        $result["announcements"] = get_results($GLOBALS["prepared_statements"]["last_announcements"]["stmt"]);
+    } else { //Statement execution failed
+        $result["message"] = mysqli_error($GLOBALS["mysqli_link"]);
     }
 
     return $result;
