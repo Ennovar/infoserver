@@ -1,0 +1,64 @@
+.centred {
+    height: auto;
+    width: 220px;
+    padding: 10px 10px 25px 10px;
+    top: 25%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    display: inline-block;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+body {
+    background-color: #efefef !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+.blue-tbox {
+    background-color: rgba(30,30,255,0.10);
+    border:none;
+    padding: 0 0 0 2px;
+    width: 100%;
+}
+
+.blue-tbox:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.float-right {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.submit {
+    border: none;
+    background-color: rgba(0,0,0,0.15);
+}
+
+.submit:focus {
+    outline: none;
+}
+
+#msg {
+    overflow: hidden;
+    white-space: nowrap;
+    color: black;
+    padding-left: 10px;
+    line-height: 25px;
+}
+
+.msg-red {
+    background-color: rgba(255,0,0,0.25);
+            
+}
+
+.msg-green {
+    background-color: rgba(0,255,0,0.25);
+}
+
+.msg-hidden {
+    display: none;
+    height: 0px;
+}
