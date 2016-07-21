@@ -62,3 +62,29 @@ body {
     display: none;
     height: 0px;
 }
+
+
+/* ===== VIEW ANNOUNCEMENTS STYLING ===== */
+.announcement {
+    min-height: 75px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 20px;
+}
+
+.announcement div {
+    padding-left: 10px;
+}
+
+.announcement-header {
+    font-size: 30px;
+    line-height: 40px;
+    height: 40px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.announcement-body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
