@@ -1,5 +1,6 @@
 <?php
 require("config.php");
+date_default_timezone_set('UTC');
 
 // MySQLi setup
 $GLOBALS["mysqli_link"] = mysqli_connect($mysql["host"], $mysql["user"], $mysql["password"], $mysql["db"]);
@@ -8,11 +9,13 @@ $GLOBALS["mysqli_link"] = mysqli_connect($mysql["host"], $mysql["user"], $mysql[
 $GLOBALS["prepared_statements"] = [
     "new_announcement" => [
         "stmt" => $GLOBALS["mysqli_link"]->prepare(
-            'INSERT INTO `announcements` (`id`, `title`, `text`) VALUES (null, ?, ?)'
+            'INSERT INTO `announcements` (`id`, `title`, `text`, `date`) VALUES (null, ?, ?, ?)'
         ), //stmt
         "args" => [
             "title" => '',
-            "text" => ''
+            "text" => '',
+            "date" => ''
+
         ] //args
     ], //new_announcement
 
@@ -38,9 +41,10 @@ $GLOBALS["prepared_statements"] = [
 //Bind Prepared Statements
 //new_announcement
 $GLOBALS["prepared_statements"]["new_announcement"]["stmt"]->bind_param(
-    'ss',
+    'sss',
     $GLOBALS["prepared_statements"]["new_announcement"]["args"]["title"],
-    $GLOBALS["prepared_statements"]["new_announcement"]["args"]["text"]
+    $GLOBALS["prepared_statements"]["new_announcement"]["args"]["text"],
+    $GLOBALS["prepared_statements"]["new_announcement"]["args"]["date"]
 );
 
 //last_announcements
@@ -103,7 +107,8 @@ function new_announcement()
         assign_args(
             [
                 "title" => $title,
-                "text" => ($text ? $text : "")
+                "text" => ($text ? $text : ""),
+                "date" => date('Y-m-d H:i:s')
             ],
             $GLOBALS["prepared_statements"]["new_announcement"]["args"]
         );
