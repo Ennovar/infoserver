@@ -144,6 +144,14 @@ body {
     font-weight: 100;
 }
 
+.slide-id {
+}
+
+.slide-date {
+    float: right;
+    vertical-align: middle;
+}
+
 .screensaver {
     position: absolute;
     top: 0px;

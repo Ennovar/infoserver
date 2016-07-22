@@ -24,26 +24,24 @@ function getAnnouncements() {
         "json"
     );
 }
+function format_date(datestring) {
+    jQuery.get(
+        "api.php",
+        {"action": "format_date", "date": datestring},
+        function (data, status) {
+            result = data["datestring"];            
+            $(".slide-date").text(result);
+        },
+        "json"
+    );
+}
 
 function dispAnnouncement() {
     var announcement = announcements[Math.floor(Math.random() * announcements.length)];
     var announcementDate = announcement["date"];
-    var d = new Date(announcementDate);
-    d.setHours(d.getHours() - 5);
-    var dateOptions = {
-        weekday: "long", year: "numeric", month: "long", day: "numeric", 
-        hour: "2-digit", minute: "2-digit", second:"2-digit"
-    };
-    var datestring = (d.toLocaleString("en-US", dateOptions));
+    format_date(announcementDate);
 
     $(".slide-header").text(announcement["title"]);
     $(".slide-body").text(announcement["text"]);
-    $(".slide-footer").html(
-        `
-        Announcement ID: ${announcement["id"]}
-        <span style="float:right; vertical-align: middle">
-            ${datestring}
-        </span>
-        `
-    );
+    $(".slide-id").text(announcement["id"]);
 }

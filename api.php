@@ -80,6 +80,12 @@ switch ($action) {
     case "get_last_announcements":
         $result = get_last_announcements();
         break;
+    case "image_url":
+        $result = image_url();
+        break;
+    case "format_date":
+        $result = format_date();
+        break;
 }
 
 respond($result);
@@ -220,5 +226,25 @@ function get_last_announcements()
         $result["message"] = mysqli_error($GLOBALS["mysqli_link"]);
     }
 
+    return $result;
+}
+
+function image_url()
+{
+    
+}
+
+function format_date()
+{
+    $result = [];
+    $date = get("date");
+    if ($date) {
+        $dateTime = datetime::createFromFormat("Y-m-d H:i:s", $date);
+        $result["success"] = true;
+        $result["datestring"] = $dateTime->format('l, F d, Y \a\t h:i:s A');
+    } else {
+        $result["success"] = false;
+        $result["msg"] = "You need to supply a date";
+    }
     return $result;
 }

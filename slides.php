@@ -12,6 +12,10 @@
                 <div class="slide-body">
                 </div>
                 <div class="slide-footer">
+                    <span class="slide-id">
+                    </span>
+                    <span class="slide-date">
+                    </span>
                 </div>
             </div>
         </div>
