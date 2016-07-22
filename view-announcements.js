@@ -47,6 +47,9 @@ function addAnnouncement(announcement) {
             </div>
             <div class="announcement-body">
                 ${announcement["text"]}
+                <div class="announcement-announcer">
+                    - ${announcement["announcer"] ? announcement["announcer"] : "Anonymous"}
+                </div>
             </div>
             <div class="announcement-footer">
                 Announcement ID: ${announcement["id"]}

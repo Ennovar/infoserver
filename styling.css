@@ -84,6 +84,13 @@ body {
 .announcement-body {
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.announcement-announcer {
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: 14px;
 }
 
 .announcement-footer {

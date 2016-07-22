@@ -9,10 +9,11 @@ $GLOBALS["mysqli_link"] = mysqli_connect($mysql["host"], $mysql["user"], $mysql[
 $GLOBALS["prepared_statements"] = [
     "new_announcement" => [
         "stmt" => $GLOBALS["mysqli_link"]->prepare(
-            'INSERT INTO `announcements` (`id`, `title`, `text`, `date`) VALUES (null, ?, ?, ?)'
+            'INSERT INTO `announcements` (`id`, `title`, `announcer`, `text`, `date`) VALUES (null,?, ?, ?, ?)'
         ), //stmt
         "args" => [
             "title" => '',
+            "announcer" => '',
             "text" => '',
             "date" => ''
 
@@ -41,8 +42,9 @@ $GLOBALS["prepared_statements"] = [
 //Bind Prepared Statements
 //new_announcement
 $GLOBALS["prepared_statements"]["new_announcement"]["stmt"]->bind_param(
-    'sss',
+    'ssss',
     $GLOBALS["prepared_statements"]["new_announcement"]["args"]["title"],
+    $GLOBALS["prepared_statements"]["new_announcement"]["args"]["announcer"],
     $GLOBALS["prepared_statements"]["new_announcement"]["args"]["text"],
     $GLOBALS["prepared_statements"]["new_announcement"]["args"]["date"]
 );
@@ -100,6 +102,7 @@ function new_announcement()
 {
     $result = [];
     $title = get("title");
+    $announcer = get("announcer");
     $text = get("text");
 
     if ($title) {
@@ -107,6 +110,7 @@ function new_announcement()
         assign_args(
             [
                 "title" => $title,
+                "announcer" => ($announcer ? $announcer : "Anonymous"),
                 "text" => ($text ? $text : ""),
                 "date" => date('Y-m-d H:i:s')
             ],
