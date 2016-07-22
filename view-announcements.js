@@ -1,6 +1,13 @@
 $(
     function () {
         $(document).ready(getAnnouncements);
+        window.setInterval(
+            function() {
+                delAnnouncements();
+                getAnnouncements();
+            },
+            15000
+        );
     }
 );
 
@@ -15,6 +22,10 @@ function getAnnouncements() {
         },
         "json"
     );
+}
+
+function delAnnouncements() {
+    $("#announcements").empty();
 }
 
 function addAnnouncement(announcement) {
