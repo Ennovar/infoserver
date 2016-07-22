@@ -240,6 +240,7 @@ function format_date()
     $date = get("date");
     if ($date) {
         $dateTime = datetime::createFromFormat("Y-m-d H:i:s", $date);
+        $dateTime->setTimezone(new dateTimeZone('America/Chicago'));
         $result["success"] = true;
         $result["datestring"] = $dateTime->format('l, F d, Y \a\t h:i:s A');
     } else {
