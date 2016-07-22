@@ -42,6 +42,7 @@ function dispAnnouncement() {
     format_date(announcementDate);
 
     $(".slide-header").text(announcement["title"]);
-    $(".slide-body").text(announcement["text"]);
+    $(".slide-text").text(announcement["text"]);
+    $(".slide-author").text((announcement["announcer"] ? announcement["announcer"] : "Anonymous"));
     $(".slide-id").text(announcement["id"]);
 }

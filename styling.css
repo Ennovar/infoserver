@@ -133,6 +133,24 @@ body {
     font-size: 5vh;
 }
 
+.slide-author {
+    font-size: 4vh;
+    font-weight: 300;
+}
+.slide-author:after {
+    content: ":";
+}
+
+.slide-text {
+    padding-left: 20px !important;
+}
+.slide-text:before {
+    content: "\"";
+}
+.slide-text:after {
+    content: "\"";
+}
+
 .slide-footer {
     border-top: 5px dashed rgba(0,0,0,0.2);
     position: absolute;

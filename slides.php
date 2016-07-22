@@ -10,6 +10,10 @@
                 <div class="slide-header">
                 </div>
                 <div class="slide-body">
+                    <div class="slide-author">
+                    </div>
+                    <div class="slide-text">
+                    </div>
                 </div>
                 <div class="slide-footer">
                     <span class="slide-id">
