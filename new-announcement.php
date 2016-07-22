@@ -5,14 +5,16 @@
     </head>
     <body>
         <div id="msg" class="msg-hidden"></div>
-        <div class="centred">
+        <div class="container">
+        <div class="centred col-md-8 col-md-offset-2">
             <form id="announcementForm">
                 Announcement Title:
                 <input class="blue-tbox" type="text" id="title">
                 Announcement Text:
-                <textarea class="blue-tbox" id="text"> </textarea>
+                <textarea class="blue-tbox" id="text" rows=30> </textarea>
                 <input class="submit float-right" type="submit" value="New Announcement">
             </form>
+        </div>
         </div>
     </body>
 </html>

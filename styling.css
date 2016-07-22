@@ -1,14 +1,11 @@
 .centred {
-    height: auto;
-    width: 220px;
+    height: 800px;
+    width: 400px;
     padding: 10px 10px 25px 10px;
-    top: 25%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    position: absolute;
     display: inline-block;
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10% auto 0 auto;
 }
 body {
     background-color: #efefef !important;
