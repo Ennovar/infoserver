@@ -1,4 +1,5 @@
 var announcements = [];
+var announcementIndex = 0;
 $(
     function () {
         $(document).ready(getAnnouncements);
@@ -37,7 +38,7 @@ function format_date(datestring) {
 }
 
 function dispAnnouncement() {
-    var announcement = announcements[Math.floor(Math.random() * announcements.length)];
+    var announcement = announcements[announcementIndex++ % announcements.length];
     var announcementDate = announcement["date"];
     format_date(announcementDate);
 
