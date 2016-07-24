@@ -231,7 +231,13 @@ function get_last_announcements()
 
 function image_url()
 {
-    
+    global $images;
+    $result = [];
+    $imageDirectory = $images["dir"];
+    $images = glob($imageDirectory . "/*.*");
+    $image = array_rand($images);
+    $result["image"] = $images[$image];
+    return $result;
 }
 
 function format_date()

@@ -4,15 +4,24 @@ $(
     function () {
         $(document).ready(getAnnouncements);
         window.setInterval(
-            function() {
-                dispAnnouncement();
+            function () {
+                if ($(".screensaver").hasClass("hidden")) {
+                    dispAnnouncement();
+                }
             },
             20000
+        );
+        window.setInterval(
+            function() {
+                save_screen();
+            },
+            60000
         );
     }
 );
 
-function getAnnouncements() {
+function getAnnouncements()
+{
     jQuery.get(
         "api.php",
         {"action": "get_last_announcements", "num": 5},
@@ -25,19 +34,41 @@ function getAnnouncements() {
         "json"
     );
 }
-function format_date(datestring) {
+function format_date(datestring)
+{
     jQuery.get(
         "api.php",
         {"action": "format_date", "date": datestring},
         function (data, status) {
-            result = data["datestring"];            
+            result = data["datestring"];
             $(".slide-date").text(result);
         },
         "json"
     );
 }
 
-function dispAnnouncement() {
+function save_screen()
+{
+    jQuery.get(
+        "api.php",
+        {"action": "image_url"},
+        function (data, status) {
+            $(".screensaver").attr("src", data["image"]);
+            $(".screensaver").removeClass("hidden");
+            setTimeout(
+                function() {
+                    $(".screensaver").addClass("hidden");
+                },
+                60000
+            );
+        },
+        "json"
+    );
+}
+
+
+function dispAnnouncement()
+{
     var announcement = announcements[announcementIndex++ % announcements.length];
     var announcementDate = announcement["date"];
     format_date(announcementDate);
