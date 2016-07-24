@@ -6,7 +6,7 @@ $(
             function() {
                 dispAnnouncement();
             },
-            15000
+            20000
         );
     }
 );
@@ -14,7 +14,7 @@ $(
 function getAnnouncements() {
     jQuery.get(
         "api.php",
-        {"action": "get_last_announcements", "num": 10},
+        {"action": "get_last_announcements", "num": 5},
         function (data, status) {
             for (var i = 0; i < data["announcements"].length; i++) {
                 announcements.push(data["announcements"][i]);
