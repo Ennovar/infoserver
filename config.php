@@ -6,3 +6,7 @@ $mysql = [
     "user" => "user",
     "password" => "password"
 ];
+
+$images = [
+    "dir" => "/path/to/images/folder"
+];
