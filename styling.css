@@ -78,7 +78,8 @@ body {
     line-height: 40px;
     height: 40px;
     font-weight: 700;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    background-color: #2196f3;
+    color: white;
 }
 
 .announcement-body {
@@ -126,7 +127,8 @@ body {
     font-size: 7vh;
     line-height: 12vh;
     font-weight: 700;
-    border-bottom: 5px solid rgba(0,0,0,0.2);
+    color: white;
+    background-color: #2196f3;
 }
 
 .slide-body {
