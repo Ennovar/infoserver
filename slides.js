@@ -1,25 +1,27 @@
 var announcements = [];
 var announcementIndex = 0;
+var cycleNumber = 0;
 $(
     function () {
         $(document).ready(getAnnouncements);
         window.setInterval(
             function () {
-                if ($(".screensaver").hasClass("hidden")) {
-                    dispAnnouncement();
-                }
+                cycle();
             },
             20000
-        );
-        window.setInterval(
-            function() {
-                save_screen();
-            },
-            65000
         );
     }
 );
 
+function cycle() {
+    if ($(".screensaver").hasClass("hidden")) {
+        if (++cycleNumber % 3 == 0) {
+            save_screen();
+        } else {
+            dispAnnouncement();
+        }
+    }
+}
 function getAnnouncements()
 {
     jQuery.get(
