@@ -5,3 +5,4 @@ Eventual Features:
 * Tracking project build statuses?
 * Fortune quotes
 * Fancy animations
+* Allow uploading images for the screensaver
